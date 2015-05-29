@@ -1,0 +1,30 @@
+{
+  "name": "puresec-handler-signal",
+  "version": "0.0.1",
+  "description": "puresec handler signal",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fhopeman/puresec-handler-signal.git"
+  },
+  "author": "Fabian Hoffmann",
+  "bugs": {
+    "url": "https://github.com/fhopeman/puresec-handler-signal/issues"
+  },
+  "homepage": "https://github.com/fhopeman/puresec-handler-signal#readme",
+  "dependencies": {
+    "express": "^4.12.4",
+    "puresec-microservice-js": "git://github.com/fhopeman/puresec-microservice-js.git#0.4.0",
+    "rpi-gpio": "^0.5.1",
+    "winston": "^1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.11.1",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.2.4",
+    "sinon": "^1.14.1"
+  },
+  "scripts": {
+    "test": "grunt travis-ci"
+  }
+}
