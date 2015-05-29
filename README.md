@@ -14,6 +14,8 @@ First of all you need a raspberry pi with installed [linux distribution](https:/
    a high value is given to the gpio pin.
 5. run the following command to start the microservice:
    `node src/app.js`
+   If you haven't configured your system to set gpio pins without root rights, you have to start
+   the application with `sudo node src/app.js`.
 
    Following options are configurable via env properties:
 | Property    | Default                 |
