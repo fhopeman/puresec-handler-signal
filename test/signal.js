@@ -5,31 +5,55 @@ var assert = require("assert");
 var sinon = require("sinon");
 
 describe("signal handler", function() {
+    var PIN_VALUE_HIGH = true;
+    var PIN_VALUE_LOW = false;
+
+    var gpioWriteStub;
+    var gpioSetupStub;
 
     afterEach(function () {
-        //if (gpioReadStub) {
-        //    gpioReadStub.restore();
-        //}
-        //if (gpioSetupStub) {
-        //    gpioSetupStub.restore();
-        //}
+        if (gpioWriteStub) {
+            gpioWriteStub.restore();
+        }
+        if (gpioSetupStub) {
+            gpioSetupStub.restore();
+        }
     });
 
     it("should be initialized", function() {
+        // given
+        gpioSetupStub = sinon.stub(gpio, "setup");
+
+        // when
+        testee.init(7);
+
         assert.notEqual(testee, undefined);
+        assert(gpioSetupStub.withArgs(7, "out").calledOnce);
     });
 
-    it("should send signal", function() {
-        //// given
-        //gpioReadStub = sinon.stub(gpio, "read");
-        //gpioSetupStub = sinon.stub(gpio, "setup");
-        //
-        //// whenŝ
-        //testee.start({}, 7, 9);
-        //this.clock.tick(3001);
-        //
-        //// then
-        //assert(gpioReadStub.withArgs(9, sinon.match.func).calledOnce);
-        //assert(gpioSetupStub.withArgs(9, "in").calledOnce);
+    it("should send true signal", function() {
+        // given
+        gpioSetupStub = sinon.stub(gpio, "setup");
+        gpioWriteStub = sinon.stub(gpio, "write");
+
+        // when
+        testee.init(7);
+        testee.send(PIN_VALUE_HIGH);
+
+        // then
+        assert(gpioWriteStub.withArgs(7, PIN_VALUE_HIGH, sinon.match.func).calledOnce);
+    });
+
+    it("should send false signal", function() {
+        // given
+        gpioSetupStub = sinon.stub(gpio, "setup");
+        gpioWriteStub = sinon.stub(gpio, "write");
+
+        // when
+        testee.init(7);
+        testee.send(PIN_VALUE_LOW);
+
+        // then
+        assert(gpioWriteStub.withArgs(7, PIN_VALUE_LOW, sinon.match.func).calledOnce);
     });
 });

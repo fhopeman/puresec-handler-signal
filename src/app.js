@@ -23,7 +23,7 @@ var webApp = puresecMicroservice.webApp();
 webApp.registerHealthCheckEndpoint(app);
 webApp.registerNotificationEndpoint(app, function(req, res) {
     logger.info("\nnotification received ..");
-    logger.info(req.body);
+    signal.send(true);
 });
 
 app.listen(port, function () {
@@ -35,11 +35,11 @@ app.listen(port, function () {
         address: utils.currentAddress(port),
         onSuccess: function(jsonBody) {
             logger.info("registration successful", jsonBody);
+            signal.init(pin);
         },
         onError: function(error) {
             logger.error("registration failed, exiting now", error);
             process.exit(1);
         }
     });
-
 });
