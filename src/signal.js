@@ -4,9 +4,13 @@ var logger = require("winston");
 var _pin;
 
 var send = function(signal) {
-    logger.info("send signal", signal, "to pin", _pin);
+    logger.info("send signal", signal, "to pin", _pin, "..");
     gpio.write(_pin, signal, function(err) {
-        logger.error("error while setting signal", err);
+        if (err) {
+            logger.error("error while setting signal", err);
+        } else {
+            logger.info("signal sent");
+        }
     });
 };
 
