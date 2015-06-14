@@ -1,6 +1,6 @@
 # puresec-handler-signal [![Build Status](https://travis-ci.org/fhopeman/puresec-handler-signal.svg?branch=master)](https://travis-ci.org/fhopeman/puresec-handler-signal)
 
-This microservice is part of the [puresec ecosystem](https://github.com/fhopeman/puresec-master) and is supposed to be an handler which gives a signal to one of the gpio ports of the
+This microservice is part of the [puresec ecosystem](https://github.com/fhopeman/puresec-master). It's supposed to be a handler which gives a signal to one of the gpio ports of the
 raspberry pi. The notifications are triggered by the master of the system.
 
 ## Preconditions
