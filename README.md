@@ -37,3 +37,6 @@ Following options are configurable via env properties:
 The start command with properties:
 
 `MASTER_URL="http://url/to/master:port" [some other properties] node src/app.js`
+
+## Contribution
+Feel free to contribute!
