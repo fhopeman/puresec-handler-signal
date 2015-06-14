@@ -9,9 +9,11 @@ First of all you need a raspberry pi with installed [linux distribution](https:/
 ## Usage
 Firstly, clone the repository to your rasbperry pi and change the directory to the created folder. To setup the microservice, you can use the `./bin/setupServer.sh` script to install npm, node and other dependencies which are mandatory. If you run `grunt` successfully and all tests passing, you are ready to start the wiring. 
 
+### Wiring
 I'm using a standard LED which is turned on if a high value is given to the gpio pin (default pin is 7). A high value will be send to the pin, if the handler receives a message from the master to handle an alarm. The easiest wiring is the following:
 pin 7 -> LED -> resistor (e.g. 470 Ohm) -> 3.3V
 
+### Run the service
 Run the following command to start the microservice:
 
 `node src/app.js`
@@ -20,6 +22,7 @@ If you haven't configured your system to set gpio pins without root rights, you 
 
 `sudo node src/app.js`.
 
+### Options
 Following options are configurable via env properties:
 
 |Property       | Description                    | Default         |
