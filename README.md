@@ -13,9 +13,12 @@ I'm using a standard LED which is turned on if a high value is given to the gpio
 pin 7 -> LED -> resistor (e.g. 470 Ohm) -> 3.3V
 
 Run the following command to start the microservice:
+
 `node src/app.js`
 
-If you haven't configured your system to set gpio pins without root rights, you have to start the application with `sudo node src/app.js`.
+If you haven't configured your system to set gpio pins without root rights, you have to start the application with 
+
+`sudo node src/app.js`.
 
 Following options are configurable via env properties:
 
@@ -29,4 +32,5 @@ Following options are configurable via env properties:
 |TURN_OFF_DELAY | Turn off delay                 | 60   |
 
 The start command with properties:
+
 `MASTER_URL="http://url/to/master:port" [some other properties] node src/app.js`
