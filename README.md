@@ -7,25 +7,25 @@ raspberry pi. The notifications are triggered by the master of the system.
 First of all you need a raspberry pi with installed [linux distribution](https://www.raspberrypi.org/downloads/).
 
 ## Usage
-1. clone repository to your rasbperry pi and change directory to the created folder
-2. run `./bin/setupServer.sh` to install npm, node and other dependencies
-3. try to run `grunt`. If all tests passing, you are ready to start
-4. now it's time to wire a signal receiver. I'm using a standard LED or a light which is turned on if
-   a high value is given to the gpio pin.
-5. run the following command to start the microservice:
-   `node src/app.js`
-   If you haven't configured your system to set gpio pins without root rights, you have to start
-   the application with `sudo node src/app.js`.
+Firstly, clone the repository to your rasbperry pi and change the directory to the created folder. To setup the microservice, you can use the `./bin/setupServer.sh` script to install npm, node and other dependencies which are mandatory. If you run `grunt` successfully and all tests passing, you are ready to start the wiring. 
 
-   Following options are configurable via env properties:
-| Property      | Default                 |
-|---------------|-------------------------|
-| MASTER_URL    | http://localhost:3000   |
-| NAME          | Signal Handler          |
-| DESCRIPTION   |                         |
-| PORT          | 3004                    |
-| PIN           | 7                       |
-|TURN_OFF_DELAY | 60                      |
+I'm using a standard LED which is turned on if a high value is given to the gpio pin (default pin is 7). A high value will be send to the pin, if the handler receives a message from the master to handle an alarm.
 
-   The start command with properties:
-   `MASTER_URL="http://url/to/master:port" [some other properties] node src/app.js`
+Run the following command to start the microservice:
+`node src/app.js`
+
+If you haven't configured your system to set gpio pins without root rights, you have to start the application with `sudo node src/app.js`.
+
+Following options are configurable via env properties:
+
+|Property       | Description                    | Default         |
+|---------------|--------------------------------|-------------|
+|MASTER_URL     | Url of the master server       | http://localhost:3000   |
+|NAME           | Name of the handler            | Signal Handler          |
+|DESCRIPTION    | Description of the handler     |                       |
+|PORT           | Port on which the handler runs | 3004                    |
+|PIN            | Pin for LED/sirene/..          | 7                       |
+|TURN_OFF_DELAY | Turn off delay                 | 60   |
+
+The start command with properties:
+`MASTER_URL="http://url/to/master:port" [some other properties] node src/app.js`
